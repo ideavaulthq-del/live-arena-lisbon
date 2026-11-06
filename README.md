@@ -1,15 +1,22 @@
-# LIVE ARENA™ 26.0 WORLD DIRECTOR AI™
+# LIVE ARENA™ 28.0 | BROADCAST CONTROL
 
-Abrir `index.html` no Chrome/Edge com acesso à Internet (Three.js via CDN).
+## O que inclui
+- `tv.html`: saída limpa de vídeo com motor 3D e grafismos da 27.0.
+- `studio.html`: realização, programação automática, meteorologia, câmaras, telemetria e bloqueio de interface por código local.
+- `index.html`: entrada no estúdio.
+- `index.jpg`: recurso gráfico original.
 
-Inclui a simulação original, a grelha LISBON ALIVE™ 24.0, os cenários WORLD ENGINE 25.0 e o WORLD DIRECTOR 26.0.
+## Arranque
+1. Extrair o ZIP e abrir terminal nesta pasta.
+2. Executar `python -m http.server 8000` (Python 3).
+3. Abrir `http://localhost:8000/studio.html` e definir um código local.
+4. Abrir `http://localhost:8000/tv.html` noutra janela.
+5. Para emitir pelo OBS Studio, adicionar fonte **Browser** com URL `http://localhost:8000/tv.html`, 1920x1080, 30 FPS. Configurar áudio, encoder, destino e credenciais na plataforma de streaming.
 
-## Novo na 26.0
-- Até 70 personagens e 24 viaturas animadas por cidade (com controlo de densidade).
-- Realização automática de quatro planos e seleção manual.
-- Meteorologia simulada por cidade, com chuva, tempestade, nevoeiro e sol.
-- Transições visuais ao mudar de cidade e grafismo televisivo.
-- Preserva a grelha automática de Lisboa e os comandos anteriores.
-
-## Limitações
-Cenários 3D estilizados, sem correspondência geográfica exata. Porto, Madrid e Sydney partilham a geometria genérica do WORLD ENGINE 25, mas possuem atores e parâmetros meteorológicos independentes. A IA de realização é uma lógica programada, não um modelo de IA externo. Não existe streaming, meteorologia real ou multiplayer. A versão precisa de Internet para carregar Three.js.
+## Limitações importantes
+- O código local é apenas um bloqueio visual, guardado em localStorage em texto simples. **Não constitui segurança/autenticação real. Não publicar o estúdio na Internet.**
+- Sincronização BroadcastChannel/localStorage funciona apenas entre páginas da mesma origem/perfil de navegador. Não existe sincronização entre máquinas nem servidor de sinalização.
+- A emissão é simulada até ser capturada e transmitida por software externo (ex. OBS).
+- Three.js ainda depende da Internet (CDN).
+- O motor original e os cenários continuam a ser simulações estilizadas.
+- Para um estúdio remoto seguro: backend, autenticação, controlo de permissões, canal em tempo real e infraestrutura de streaming.
