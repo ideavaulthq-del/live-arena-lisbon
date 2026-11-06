@@ -1,22 +1,16 @@
-# LIVE ARENA™ 28.0 | BROADCAST CONTROL
+# LIVE ARENA™ 30.0 | SPATIAL SOUND DIRECTOR
 
-## O que inclui
-- `tv.html`: saída limpa de vídeo com motor 3D e grafismos da 27.0.
-- `studio.html`: realização, programação automática, meteorologia, câmaras, telemetria e bloqueio de interface por código local.
-- `index.html`: entrada no estúdio.
-- `index.jpg`: recurso gráfico original.
+Continuação da versão 29, preservando o motor 3D, a grelha automática LISBON ALIVE™, a emissão limpa e o estúdio local.
 
-## Arranque
-1. Extrair o ZIP e abrir terminal nesta pasta.
-2. Executar `python -m http.server 8000` (Python 3).
-3. Abrir `http://localhost:8000/studio.html` e definir um código local.
-4. Abrir `http://localhost:8000/tv.html` noutra janela.
-5. Para emitir pelo OBS Studio, adicionar fonte **Browser** com URL `http://localhost:8000/tv.html`, 1920x1080, 30 FPS. Configurar áudio, encoder, destino e credenciais na plataforma de streaming.
+## Novidades
+- Áudio estéreo com posicionamento panorâmico dos efeitos, quando suportado pelo navegador. Não é localização 3D precisa dos objetos.
+- Limitador de 18 vozes procedurais simultâneas para reduzir sobreposição e consumo de CPU.
+- Redução automática do volume geral (ducking) em alertas, sirenes, impactos e separadores.
+- Controlo de intensidade, áudio espacial e mistura dinâmica no estúdio.
+- Mantidos os efeitos procedurais de cidade, trânsito, pessoas, chuva, tempestade, emergência e cinema.
 
-## Limitações importantes
-- O código local é apenas um bloqueio visual, guardado em localStorage em texto simples. **Não constitui segurança/autenticação real. Não publicar o estúdio na Internet.**
-- Sincronização BroadcastChannel/localStorage funciona apenas entre páginas da mesma origem/perfil de navegador. Não existe sincronização entre máquinas nem servidor de sinalização.
-- A emissão é simulada até ser capturada e transmitida por software externo (ex. OBS).
-- Three.js ainda depende da Internet (CDN).
-- O motor original e os cenários continuam a ser simulações estilizadas.
-- Para um estúdio remoto seguro: backend, autenticação, controlo de permissões, canal em tempo real e infraestrutura de streaming.
+## Executar
+Na pasta extraída: `python -m http.server 8000`. Abrir `http://localhost:8000/studio.html`, depois `http://localhost:8000/tv.html`. Clicar na TV para permitir som quando necessário. No OBS, usar a página tv.html como Browser Source e ativar áudio.
+
+## Limitações
+Os efeitos são sintetizados e desencadeados por eventos/programas; não existe correspondência espacial exata com veículos/personagens individuais. A emissão 24/7 pública necessita de infraestrutura externa e supervisão. O bloqueio local do estúdio não é autenticação segura. O motor 3D ainda carrega Three.js da Internet.
